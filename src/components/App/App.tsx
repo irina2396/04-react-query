@@ -8,7 +8,7 @@ import MovieGrid from '../MovieGrid/MovieGrid'
 import Loader from '../Loader/Loader'
 import ErrorMessage from '../ErrorMessage/ErrorMessage'
 import MovieModal from '../MovieModal/MovieModal'
-import { useQuery } from '@tanstack/react-query'
+import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import ReactPaginate from 'react-paginate'
 
 
@@ -26,6 +26,7 @@ function App() {
     queryKey: ['movie', query, page],
     queryFn: () => fetchMovies(query, page),
     enabled: query !== "",
+    placeholderData: keepPreviousData,
   })
 
   useEffect(() => {
